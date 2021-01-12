@@ -1,6 +1,7 @@
 package com.sakkiwakki.warshipgame.view;
 
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
@@ -17,9 +18,14 @@ public class ViewManager {
 		mainScene = new Scene(mainPane,WIDTH,HEIGHT);
 		mainStage = new Stage();
 		mainStage.setScene(mainScene);
+		mainScreenButtons();
 	}
 	
 	public Stage getMainStage() {
 		return mainStage;
+	}
+	
+	private void mainScreenButtons() {
+		
 	}
 }
