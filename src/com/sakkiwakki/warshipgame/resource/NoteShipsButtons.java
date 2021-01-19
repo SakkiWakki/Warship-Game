@@ -9,13 +9,13 @@ import javafx.scene.input.MouseButton;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.text.Font;
 
-public class WarshipGameButtons extends Button {
+public class NoteShipsButtons extends Button {
 
 	private final String FONT_PATH = "src/com/sakkiwakki/warshipgame/resource/font/handwritingfont.ttf";
 	private final String BUTTON_NORMAL = "-fx-background-color: transparent; -fx-background-image: url('com/sakkiwakki/warshipgame/resource/image/button/button.png')";
 	private final String BUTTON_ONHOLD = "-fx-background-color: transparent; -fx-background-image: url('com/sakkiwakki/warshipgame/resource/image/button/button_pressed.png')";
 	
-	public WarshipGameButtons(String str) {
+	public NoteShipsButtons(String str) {
 		setText(str);
 		setButtonFont();
 		setPrefWidth(200);
