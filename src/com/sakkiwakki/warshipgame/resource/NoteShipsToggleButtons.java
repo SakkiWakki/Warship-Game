@@ -18,7 +18,7 @@ public class NoteShipsToggleButtons extends ToggleButton {
 		PRESSED = ship.getPressed();
 		setPrefSize(150,90);
 		setStyle(NORMAL);
-		if (ship.equals(ship.YUKIKAZE)) setStyle(PRESSED);
+		if (ship.equals(ShipNames.YUKIKAZE)) setStyle(PRESSED);
 		
 		setOnMouseClicked(new EventHandler<MouseEvent>() {
 			@Override

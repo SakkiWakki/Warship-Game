@@ -11,8 +11,10 @@ import javafx.scene.layout.BackgroundImage;
 import javafx.scene.layout.BackgroundPosition;
 import javafx.scene.layout.BackgroundRepeat;
 
+import java.util.Arrays;
 import java.util.Random;
 
+import com.sakkiwakki.warshipgame.resource.NoteShipsStatsCalc;
 import com.sakkiwakki.warshipgame.shipinfo.ShipNames;
 
 import javafx.animation.AnimationTimer;
@@ -28,15 +30,23 @@ abstract class GameStage extends Scene {
 	private boolean a;
 	private boolean s;
 	private boolean d;
+	private boolean space;
 	
 	//Stats:
-	private int playerHealth = 100;
+	Random rng2 = new Random();
+	
+	private int[] radiuses = {rng2.nextInt(10),rng2.nextInt(10),rng2.nextInt(10),rng2.nextInt(10),rng2.nextInt(10),rng2.nextInt(10),rng2.nextInt(10)};
+	
+	private int playerHealth = 100 + NoteShipsStatsCalc.calculateHEALTH();
 	private int collisionDmg = 20;
 	
-	private int collisionRadius = 50;
+	private NoteShipsStatsCalc bob = new NoteShipsStatsCalc();
+	
+	private int collisionRadius = 30 + NoteShipsStatsCalc.arrIntMode(radiuses) - NoteShipsStatsCalc.minNum(radiuses) + NoteShipsStatsCalc.maxNum(radiuses) + bob.getAnts()/2;
 	
 	//
 
+	
 	private AnimationTimer gameTimer;
 	
 	private static final String MASS_PRODUCED_DD_IMG = "/com/sakkiwakki/warshipgame/resource/image/ship/mass_produced_dd.png";
@@ -45,6 +55,7 @@ abstract class GameStage extends Scene {
 	
 	public GameStage() {
 		super(new AnchorPane(), WIDTH, HEIGHT);
+		SelectScreen.gameStart = true;
 		mainPane = (AnchorPane) this.getRoot();
 		
 		rng = new Random();
@@ -54,6 +65,7 @@ abstract class GameStage extends Scene {
 		createShip(SelectScreen.whichShip);
 		createKeyListeners();
 		createGameLoop();
+		System.out.println(Arrays.toString(NoteShipsStatsCalc.eachDigitInInt(playerHealth)));
 	}
 
 	private void createKeyListeners() {
@@ -109,9 +121,15 @@ abstract class GameStage extends Scene {
 				collision();
 			}
 		};
-		
 		gameTimer.start();
 	}
+	
+	/*
+	 * This method allows the user to move the ship using the WASD keys on the keyboard.
+	 * 
+	 * Precondition: StageOne has to be set as a scene of the main stage
+	 * 
+	 */
 	
 	private void moveShip() {
 		if (!w && !d && !s && !a) {
@@ -148,6 +166,14 @@ abstract class GameStage extends Scene {
 		}
 	}
 	
+	/*
+	 *  This method creates the ship sprite for the gameplay
+	 *  
+	 *  Precondition: The player has to have chosen the valid ship in the ship selection screen
+	 * 	Postcondition: The sprite of the ship the player chose will be shown on screen
+	 * 
+	 */
+	
 	private void createShip(ShipNames ship) {
 		shipImage = new ImageView(ship.getPicture());
 		shipImage.setFitHeight(70);
@@ -157,6 +183,7 @@ abstract class GameStage extends Scene {
 		shipImage.setLayoutY(HEIGHT/2);
 		mainPane.getChildren().add(shipImage);
 	}
+	
 	
 	private void createEnemy() {
 		numberOfEnemy = new ImageView[6];
@@ -195,14 +222,29 @@ abstract class GameStage extends Scene {
 		mainPane.setBackground(new Background(background));
 	}
 
+	/**
+	 * This decreases the int playerHealth by the int collisionDmg
+	 * 
+	 * Precondition: playerHealth > 0
+	 * Postcondition: playerHealth = playerHealth - collisionDmg; In the case that playerHealth becomes negative, takes the user back to the main menu.
+	 * 
+	 */
+
 	private void healthDetriment() {
 		playerHealth -= collisionDmg;
 		if(playerHealth <= 0) {
 			gameTimer.stop();
+			SelectScreen.gameStart = false;
 			ViewManager.mainStage.setScene(new MainScreen());
 		}
 	}
-	
+	/**
+	 * Creates a collision box around the player and the enemy ships, and then lowers the player's health.
+	 * 
+	 * Precondition: playerHealth < 100; numberOfEnemy.length > 0
+	 * Postcondition: playerHealth = playerHealth - collisionDamage; The struck entity moved back to the right.
+	 * 
+	 */
 	private void collision() {
 		for (int i = 0; i < numberOfEnemy.length; i++) {
 			if (collisionRadius*2 > distanceFormula(shipImage.getLayoutX()+75, numberOfEnemy[i].getLayoutX() + 75, shipImage.getLayoutY()+35, numberOfEnemy[i].getLayoutY() + 35)) {
@@ -216,3 +258,19 @@ abstract class GameStage extends Scene {
 		return Math.sqrt(Math.pow(x1-x2,2) + Math.pow(y1-y2, 2));
 	}
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -22,7 +22,6 @@ import javafx.scene.layout.Background;
 import javafx.scene.layout.BackgroundImage;
 import javafx.scene.layout.BackgroundPosition;
 import javafx.scene.layout.BackgroundRepeat;
-import javafx.scene.layout.VBox;
 import javafx.scene.text.Font;
 import javafx.scene.SubScene;
 import javafx.scene.control.Button;
@@ -53,13 +52,15 @@ public class SelectScreen extends Scene {
 	
 	public static List<EquipmentNames> equipList;
 	
+	public static boolean gameStart = false;
+	
 	AnchorPane mainPane;
 	
 	public static final int HEIGHT = 600;
 	public static final int WIDTH = 800;
 	
 	
-	SelectScreen() {
+	public SelectScreen() {
 		super(new AnchorPane(),WIDTH,HEIGHT);
 		NoteShipsStatsCalc.refreshNums();
 		Label title = new NoteShipsLabels("Ship Select",40,80,0);

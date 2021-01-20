@@ -1,7 +1,5 @@
 package com.sakkiwakki.warshipgame.resource;
 
-import com.sakkiwakki.warshipgame.view.SelectScreen;
-
 public class NoteShipsLevelStatsLabel extends NoteShipsLabels {
 	public NoteShipsLevelStatsLabel() {
 		super(20,25,20);

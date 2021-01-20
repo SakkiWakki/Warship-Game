@@ -7,6 +7,7 @@ import com.sakkiwakki.warshipgame.Main;
 import com.sakkiwakki.warshipgame.resource.NoteShipsButtons;
 import com.sakkiwakki.warshipgame.resource.NoteShipsSubscene;
 
+
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.Scene;
@@ -78,7 +79,7 @@ public class MainScreen extends Scene{
 	}
 	
 	private void createSubscene() {
-		infoSubscene = new NoteShipsSubscene();
+		infoSubscene = new NoteShipsSubscene("Yukikaze\nYukikaze was a Kagerou-class destroyer part of the IJN \n She was known as the lucky ship because\nof her extraordinary abilities to survive battles without a scratch.\nHowever, those around her viewed her as bad luck because\nit seemed as if she absorbed all their luck.\nShe was one of the only surviving IJN destroyers\nafter WWII, and ended up getting damaged by a Tycoon\n70 years later in Taiwan.");
 		mainPane.getChildren().add(infoSubscene);
 	}
 	
