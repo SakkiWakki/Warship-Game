@@ -5,9 +5,10 @@ import javafx.application.Application;
 import javafx.stage.Stage;
 
 public class Main extends Application {
+	public static ViewManager manager = new ViewManager();
+	
 	@Override
 	public void start(Stage primaryStage) throws Exception{
-		ViewManager manager = new ViewManager();
 		primaryStage = manager.getMainStage();
 		primaryStage.show();
 	}

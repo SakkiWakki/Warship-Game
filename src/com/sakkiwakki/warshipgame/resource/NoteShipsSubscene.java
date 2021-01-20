@@ -1,6 +1,5 @@
 package com.sakkiwakki.warshipgame.resource;
 
-import javafx.animation.SequentialTransition;
 import javafx.animation.TranslateTransition;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -21,7 +20,6 @@ public class NoteShipsSubscene extends SubScene{
 	
 	private boolean isHidden;
 	
-	private final static String FONT_PATH = "src/com/sakkiwakki/warshipgame/resource/font/handwritingfont.ttf";
 	private final static String BACKGROUND_IMAGE = "/com/sakkiwakki/warshipgame/resource/image/subscene/subscene.png";
 	private final String CLOSE_BUTTON_NORMAL = "-fx-background-color: transparent; -fx-background-image: url('com/sakkiwakki/warshipgame/resource/image/button/close_button_normal.png')";
 	private final String CLOSE_BUTTON_HIGHLIGHTED = "-fx-background-color: transparent; -fx-background-image: url('com/sakkiwakki/warshipgame/resource/image/button/close_button_highlighted.png')";
