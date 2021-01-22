@@ -6,7 +6,7 @@ import com.sakkiwakki.warshipgame.view.SelectScreen;
 
 public class NoteShipsStatsCalc {
 	
-	//joke
+	//unfunny joke
 	private int ants = 6;
 	private static NoteShipsStatsCalc bob = new NoteShipsStatsCalc();
 	//
@@ -58,9 +58,11 @@ public class NoteShipsStatsCalc {
 		System.out.println(containsArg(FP,0));
 		System.out.println(allDivByInt(FP,2));
 		System.out.println(containsDupe(FP));
+		System.out.println(minNum(FP));
 		System.out.println(countDivByInt(FP,2));
 		System.out.println(Arrays.toString(moveRight(FP)));
 		System.out.println(bob);
+		consecutivePairs(FP);
 	}
 	
 	@Override
@@ -267,6 +269,14 @@ public class NoteShipsStatsCalc {
 	    	    for (int i = 1; i < result.length; i++)
 	    	      result[i] = arr[i-1];
 	    	    return result; 
+	    	  }
+	      public static void consecutivePairs(int[] arr) {
+	    	    for (int i = 0; i < arr.length - 1; i++) {
+	    	      if (arr[i] == arr[i+1]) {
+	    	        System.out.println("happy");
+	    	      }
+	    	      System.out.println("sad");
+	    	    }
 	    	  }
 	
 	

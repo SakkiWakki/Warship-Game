@@ -43,7 +43,6 @@ abstract class GameStage extends Scene {
 	private NoteShipsStatsCalc bob = new NoteShipsStatsCalc();
 	
 	private int collisionRadius = 30 + NoteShipsStatsCalc.arrIntMode(radiuses) - NoteShipsStatsCalc.minNum(radiuses) + NoteShipsStatsCalc.maxNum(radiuses) + bob.getAnts()/2;
-	
 	//
 
 	
@@ -168,6 +167,8 @@ abstract class GameStage extends Scene {
 	
 	/*
 	 *  This method creates the ship sprite for the gameplay
+	 *  
+	 *  @param  ship  the ship the player selected
 	 *  
 	 *  Precondition: The player has to have chosen the valid ship in the ship selection screen
 	 * 	Postcondition: The sprite of the ship the player chose will be shown on screen
