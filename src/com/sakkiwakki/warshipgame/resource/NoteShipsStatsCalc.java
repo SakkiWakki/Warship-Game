@@ -83,9 +83,7 @@ public class NoteShipsStatsCalc {
 		for (int i: LCK) {
 			total += i;
 		}
-		while (true) {
 			return total/LCK.length;
-		}
 	}
 	
 	
